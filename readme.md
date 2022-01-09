@@ -10,7 +10,7 @@ https://dotnet.microsoft.com/en-us/download/dotnet/3.1
 
 2. Download build
 
-https://github.com/xantezza/automatic-backup/releases/download/v1.0/BackupiumClient.rar 
+https://github.com/xantezza/automatic-backup/releases/latest
 
 
 3. Unzip files to any folder.
