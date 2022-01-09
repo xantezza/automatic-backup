@@ -34,3 +34,4 @@ https://github.com/xantezza/automatic-backup/releases/latest
 }
 ```
 6. Run the `Client.exe` from admin.
+7. You can add app to autostart group => C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
