@@ -1,22 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Client
 {
     internal static class FileProcessor
     {
-        public static byte[] FormatFileToSend(string filePath, byte[] fileData, SendInfo sendInfo)
+        public static byte[] FormatFileToSend(string filePath, byte[] fileData, ClientNetworkProcessor.SendInfo sendInfo)
         {
             var dataToSend = new List<byte>();
 
-            if (sendInfo == SendInfo.Chunk)
+            if (sendInfo == ClientNetworkProcessor.SendInfo.Chunk)
             {
                 foreach (var byteOfFile in fileData)
                 {
                     dataToSend.Add(byteOfFile);
                 }
             }
-            if (sendInfo == SendInfo.FullFile)
+            if (sendInfo == ClientNetworkProcessor.SendInfo.FullFile)
             {
                 var encodedFilePath = Encoding.Unicode.GetBytes(filePath);
                 var offsetForEncodedFilePathBytes = 10;

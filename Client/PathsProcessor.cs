@@ -39,6 +39,7 @@ namespace Client
         private static void SaveCache(Dictionary<string, long> cache, string path)
         {
             var json = JsonConvert.SerializeObject(cache);
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
             File.WriteAllText(path, json);
         }
 

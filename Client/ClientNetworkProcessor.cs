@@ -5,6 +5,12 @@ namespace Client
 {
     internal static class ClientNetworkProcessor
     {
+        public enum SendInfo
+        {
+            FullFile,
+            Chunk
+        }
+
         public static void TrySendData(string[] filesToSend, string[] filesToDelete, LocalFakeServer localFakeServer)
         {
             foreach (var filePath in filesToSend)
@@ -41,15 +47,7 @@ namespace Client
 
                     fileStream.Read(fileData, 0, (int)chunkByteSize);
 
-                    SendInfo sendInfo;
-                    if (i != 0)
-                    {
-                        sendInfo = SendInfo.Chunk;
-                    }
-                    else
-                    {
-                        sendInfo = SendInfo.FullFile;
-                    }
+                    var sendInfo = i == 0 ? SendInfo.FullFile : SendInfo.Chunk;
 
                     formatedFileData = FileProcessor.FormatFileToSend(filePath, fileData, sendInfo);
                 }

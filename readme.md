@@ -4,13 +4,18 @@
 
 To use the application you need:
 
-1. Download repository.
+1. Download .NET CORE 3.1
 
-2. Build the project using `cmd` & `dotnet build` or any another convenient way.
+https://dotnet.microsoft.com/en-us/download/dotnet/3.1
 
-3. Run the `build`.
+2. Download build
 
-4. Check the folder in which this build is located, it should contain the `Config.json` file.
+https://github.com/xantezza/automatic-backup/releases/download/v1.0/BackupiumClient.rar 
+
+
+3. Unzip files to any folder.
+
+4. It should contain the `Config.json` file.
 
 5. Open the `Config.json` file and configure it as in the example by entering the required `values` and `paths`.
 
@@ -18,13 +23,14 @@ To use the application you need:
 {
   "timeStampForAutoCheckInSeconds" : 300, 
 
-  "backupPath" : "I:\\BackUp", 
-  "cachePath" : "I:\\BackUp\\Cache.json",
+  "backupPath" : "D:\\BackUp", 
+  "cachePath" : "D:\\BackUp\\Cache.json",
 
   "pathesToData" : 
   [
-	  "C:\\Users\\"
+	  "C:\\Folder1\\Subfolder",
+      "D:\\Folder2\\Subfolder"
   ]
 }
 ```
-6. Restart the `build`.
+6. Run the `Client.exe` from admin.
