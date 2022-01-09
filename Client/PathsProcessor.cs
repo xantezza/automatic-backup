@@ -47,41 +47,50 @@ namespace Client
         {
             var filesToSend = new Dictionary<string, long>();
 
-            foreach (var directoryPath in pathesToData)
+            foreach (var coreDirectoryPath in pathesToData)
             {
-                try
-                {
-                    foreach (var filePath in Directory.GetFiles(directoryPath, "**", SearchOption.AllDirectories))
-                    {
-                        try
-                        {
-                            var fileStream = new FileStream(filePath, FileMode.Open);
+                var subdirs = Directory.GetDirectories(coreDirectoryPath);
+                List<string> filePathes = new List<string>();
 
-                            if (cache != null && cache.ContainsKey(filePath))
-                            {
-                                if (cache[filePath] != fileStream.Length)
-                                {
-                                    filesToSend.Add(filePath, fileStream.Length);
-                                }
-                            }
-                            else
+                foreach (var subdir in subdirs)
+                {
+                    try
+                    {
+                        Directory.GetFiles(subdir, "**", SearchOption.AllDirectories).ToList().ForEach(filePathes.Add);
+                    }
+
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        continue;
+                    }
+                }
+                foreach (var filePath in filePathes)
+                {
+                    try
+                    {
+                        var fileStream = new FileStream(filePath, FileMode.Open);
+
+                        if (cache != null && cache.ContainsKey(filePath))
+                        {
+                            if (cache[filePath] != fileStream.Length)
                             {
                                 filesToSend.Add(filePath, fileStream.Length);
                             }
-                            fileStream.Close();
                         }
-                        catch (Exception e)
+                        else
                         {
-                            Console.WriteLine(e);
-                            continue;
+                            filesToSend.Add(filePath, fileStream.Length);
                         }
+                        fileStream.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        continue;
                     }
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    continue;
-                }
+                
             }
 
             return filesToSend;
