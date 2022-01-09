@@ -28,7 +28,7 @@ https://github.com/xantezza/automatic-backup/releases/download/v1.0/BackupiumCli
 
   "pathesToData" : 
   [
-	  "C:\\Folder1\\Subfolder",
+      "C:\\Folder1\\Subfolder",
       "D:\\Folder2\\Subfolder"
   ]
 }
