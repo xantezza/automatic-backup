@@ -10,7 +10,7 @@ https://dotnet.microsoft.com/en-us/download/dotnet/3.1
 
 2. Download build
 
-https://github.com/xantezza/automatic-backup/releases/download/v1.0/BackupiumClient.rar 
+https://github.com/xantezza/automatic-backup/releases/latest
 
 
 3. Unzip files to any folder.
@@ -28,9 +28,10 @@ https://github.com/xantezza/automatic-backup/releases/download/v1.0/BackupiumCli
 
   "pathesToData" : 
   [
-	  "C:\\Folder1\\Subfolder",
+      "C:\\Folder1\\Subfolder",
       "D:\\Folder2\\Subfolder"
   ]
 }
 ```
 6. Run the `Client.exe` from admin.
+7. You can add app to autostart group on path `C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
